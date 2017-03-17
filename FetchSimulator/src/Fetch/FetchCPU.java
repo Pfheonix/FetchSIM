@@ -189,16 +189,40 @@ public class FetchCPU {
                 }
                 break;
             case 10:
+                switch(dstMode){
+                    case 0:
+                        for(int i = 7; i >= 0; --i){
+                            if(register[dest].getBits()[i]){
+                                register[dest].getBits()[i] = false;
+                                if(i == 7){
+                                    psw.setC();
+                                }
+                            }
+                            register[dest].getBits()[i] = true;
+                            break;
+                        }
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        System.out.printf("Something went so wrong, man.\n");
+                }
                 break;
             case 11:
                 break;
             case 12:
                 break;
             case 13:
+
                 break;
             case 14:
                 break;
             case 15:
+                System.exit(0);
                 break;
             default:
                 System.out.printf("Something went so wrong, man.\n");
